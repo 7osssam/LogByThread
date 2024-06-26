@@ -71,6 +71,21 @@ After building the project, an executable named `demo` will be created in the `b
 ./demo/demo
 ```
 
+### CMake Configuration
+```cmake
+#========================= LogByThread =========================
+
+# Add the include directory for the LogByThread library
+add_subdirectory(LogByThread/include)
+
+# Include directories
+include_directories(LogByThread/include)
+
+# Link the LogByThread library
+target_link_libraries(${PROJECT_NAME} PRIVATE LogByThread_lib)
+#==================================================================
+```
+
 ## Library Overview
 
 ### Logger
