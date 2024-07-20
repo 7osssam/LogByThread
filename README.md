@@ -76,15 +76,38 @@ After building the project, an executable named `demo` will be created in the `b
 #========================= LogByThread =========================
 
 # Add the include directory for the LogByThread library
-add_subdirectory(LogByThread/include)
+add_subdirectory(LogByThread)
+
+# optional: Build the demo application (default: OFF)
+option(LOG_BY_THREAD_BUILD_DEMO "Build the demo" OFF)
 
 # Include directories
 include_directories(LogByThread/include)
 
 # Link the LogByThread library
-target_link_libraries(${PROJECT_NAME} PRIVATE LogByThread_lib)
+target_link_libraries(${PROJECT_NAME} PRIVATE LogByThread)
 #==================================================================
 ```
+
+## How to Use the Library
+1. **Include the Library Headers:**
+
+   ```cpp
+   #include "logger.h"
+   ```
+
+2. **Install the Message Handler:**
+
+   ```cpp
+	qInstallMessageHandler(Logger::myMessageOutput);
+   ```
+3. **Start Logging:**
+
+   ```cpp
+	Logger::instance()->startLogging();
+   ```
+   - To suspend logging, use `Logger::instance()->suspendLogging()`.
+
 
 ## Library Overview
 
